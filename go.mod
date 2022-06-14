@@ -1,4 +1,4 @@
-module github.com/Apartkktrain/postserver
+module github.com/Apartkktrain/go-http-put
 
 go 1.18
 
