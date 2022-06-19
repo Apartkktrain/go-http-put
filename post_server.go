@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"time"
+	"io"
 
 	"github.com/fatih/color"
 )
@@ -33,9 +34,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	    case "PUT":
 	      length := r.ContentLength
 	      fmt.Println("length:",length)
+
 	      body := make([]byte, length)
-	      r.Body.Read(body)
-	      fmt.Println(string(body))
+	      _,err := r.Body.Read(body)
+	      r.Body.Close()
+	      if err == io.EOF{
+	    	fmt.Println(string(body))
+	      	break
+	      }
+	      
 	    default:
 	      return
     }
