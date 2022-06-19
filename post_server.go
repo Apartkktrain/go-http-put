@@ -40,11 +40,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	      r.Body.Close()
 	      if err == io.EOF{
 	    	fmt.Println(string(body))
-	      	break
 	      }
-	      
+	      break
 	    default:
-	      return
+	      break
     }
 
 }
